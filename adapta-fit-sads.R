@@ -3,7 +3,7 @@ library(GenSA)
 ### READING DATASET
 
 ## reading tara data
-tara_data <- read.table() #INSERT;
+tara_data <- read.csv("#INSERT")
 
 ### COMMAND LINE ARGUMENTS
 
@@ -40,7 +40,7 @@ final_pvalue <- 0
 final_mod_ksdist <- 0
 
 ## number of boots for p - value calculation
-boot_reps <-  #INSERT (200)
+boot_reps <- #INSERT (200)
 
 ## loop over selected samples
 for (sample_counter in start_sample:(start_sample + job_number_sample - 1)) {
@@ -65,10 +65,10 @@ for (sample_counter in start_sample:(start_sample + job_number_sample - 1)) {
   abund_max <- max(vec)
   ### DECLARATIONS AND PARAMETERS
   ## setting starting value for x_max
-  start_x_max <- as.integer() #INSERT (0)
+  start_x_max <- as.integer("#INSERT") #0
 
   ## setting end value for x_max
-  end_x_max <- as.integer() #INSERT (10100)
+  end_x_max <- as.integer("#INSERT") #10100
   ## initialize x_max
   x_max <- as.integer(0)
 
@@ -103,20 +103,21 @@ for (sample_counter in start_sample:(start_sample + job_number_sample - 1)) {
   #off par(mfrow = c(2, 1))
   while (shall_i_continue) {
     ## stepping
-    x_max <- max(start_x_max, x_max) +  #INSERT (50)
+    x_max <- max(start_x_max, x_max) + #INSERT (50)
     counter <- counter + 1
 
     ## calculating n == n(x_max)
     n <- sum(vec <= x_max)
     vec_n[counter] <- n
+
+    if (counter > 1 && n <= vec_n[(counter - 1)]) {
+      x_max <- vec[n + 1]
+      n <- sum(vec <= x_max)
+      vec_n[counter] <- n
+    }
     print("NUMBER OF DATA POINTS")
     print(n)
 
-    if (counter > 1 && n <= vec_n[(counter - 1)]) {
-    x_max <- vec[n + 1]
-    n <- sum(vec <= x_max)
-    vec_n[counter] <- n
-    }
     vec_x_max[counter] <- x_max
     shall_i_continue <- ifelse(n < length(vec), TRUE, FALSE)
 
