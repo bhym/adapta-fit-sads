@@ -108,17 +108,3 @@ The code output two kind of files:
 
  [[Xiang et al. (2013)]](https://www.researchgate.net/profile/Sylvain_Gubian/publication/265058751_Generalized_Simulated_Annealing_for_Global_Optimization_The_GenSA_Package/links/53fdca890cf22f21c2f8470e/Generalized-Simulated-Annealing-for-Global-Optimization-The-GenSA-Package.pdf) Xiang, Y., Gubian, S., Suomela, B., & Hoeng, J. (2013). Generalized Simulated Annealing for Global Optimization: The GenSA Package. *R Journal*, 5(1).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
