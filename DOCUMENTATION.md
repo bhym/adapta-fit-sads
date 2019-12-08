@@ -33,51 +33,51 @@ Here we list all the parameters that should be set to run the code. The place in
 - Two command line arguments should be given while executing the code. They are useful when launching several jobs on the same dataset:
 ```R
 ## how many samples are taken in each job 
-job_number_sample = as.integer(args[1])
+job_number_sample <- as.integer(args[1])
 
 ## counter for the initial sample number for a job
-start_sample = as.integer(args[2])
+start_sample <- as.integer(args[2])
 ``` 
-
-
 
 #### Parameters inside the code
 
 - The path of the input file:
 ```R
 ## reading tara data
-tara_data = read.csv(#INSERT);
+tara_data <- read.csv(#INSERT);
 ```
 
 - The number of boots used by the Monte Carlo to calculate the p-value:
 ```R
 ## number of boots for p-value calculation
-boot_reps = #INSERT
+boot_reps <- #INSERT
 ```
 
 - The minimum value allowed for the cutoff on the abundances i.e. the value from which the loop over `x_max` starts:
 ```R
     ## setting starting value for x_max
-    start_x_max = as.integer(#INSERT)
+    start_x_max <- as.integer(#INSERT)
 ```
 
 - The maximum value allowed for the cutoff on the abundances i.e. the value at which the loop over `x_max` ends:
 ```R
     ## setting end value for x_max
-    end_x_max = as.integer(#INSERT)
+    end_x_max <- as.integer(#INSERT)
 ```
 
-- The size of the step among two consecutive values of `x_max` in the loop. Note that it could be also a nonlinear function of `x_max`:
+- The size of the step among two consecutive values of `x_max` in the loop.
 ```R
         ## stepping
-        x_max = start_x_max + #INSERT
-        counter = counter + 1
-        vec_x_max[counter] = x_max
+        x_max <- start_x_max + #INSERT
+        counter <- counter + 1
 ```
 
 - The parameters needed by the generalized simulated annealing algorithm, please refer to [Xiang et al. (2013)](#references) for the details:
 ```R
-        estimated_parameters = GenSA(c(#INSERT), L_func)$par
+  estimated_parameters <- GenSA(c("#INSERT"), l_func,                         
+                                lower = c("#INSERT"),                         
+                                upper = c("#INSERT"),                         
+                                control = list(max.time = 10))$par  
 ```
 
 
